@@ -198,20 +198,12 @@ LvStyle& LvStyle::setBgColor(lv_color_t value){
 	lv_style_set_bg_color(cObj.get(),value);
 	return *this;
 }
-LvStyle& LvStyle::setBgColorFiltered(lv_color_t value){
-	lv_style_set_bg_color_filtered(cObj.get(),value);
-	return *this;
-}
 LvStyle& LvStyle::setBgOpa(lv_opa_t value){
 	lv_style_set_bg_opa(cObj.get(),value);
 	return *this;
 }
 LvStyle& LvStyle::setBgGradColor(lv_color_t value){
 	lv_style_set_bg_grad_color(cObj.get(),value);
-	return *this;
-}
-LvStyle& LvStyle::setBgGradColorFiltered(lv_color_t value){
-	lv_style_set_bg_grad_color_filtered(cObj.get(),value);
 	return *this;
 }
 LvStyle& LvStyle::setBgGradDir(lv_grad_dir_t value){
@@ -238,10 +230,6 @@ LvStyle& LvStyle::setBgImgRecolor(lv_color_t value){
 	lv_style_set_bg_img_recolor(cObj.get(),value);
 	return *this;
 }
-LvStyle& LvStyle::setBgImgRecolorFiltered(lv_color_t value){
-	lv_style_set_bg_img_recolor_filtered(cObj.get(),value);
-	return *this;
-}
 LvStyle& LvStyle::setBgImgRecolorOpa(lv_opa_t value){
 	lv_style_set_bg_img_recolor_opa(cObj.get(),value);
 	return *this;
@@ -252,10 +240,6 @@ LvStyle& LvStyle::setBgImgTiled(bool value){
 }
 LvStyle& LvStyle::setBorderColor(lv_color_t value){
 	lv_style_set_border_color(cObj.get(),value);
-	return *this;
-}
-LvStyle& LvStyle::setBorderColorFiltered(lv_color_t value){
-	lv_style_set_border_color_filtered(cObj.get(),value);
 	return *this;
 }
 LvStyle& LvStyle::setBorderOpa(lv_opa_t value){
@@ -276,10 +260,6 @@ LvStyle& LvStyle::setBorderPost(bool value){
 }
 LvStyle& LvStyle::setTextColor(lv_color_t value){
 	lv_style_set_text_color(cObj.get(),value);
-	return *this;
-}
-LvStyle& LvStyle::setTextColorFiltered(lv_color_t value){
-	lv_style_set_text_color_filtered(cObj.get(),value);
 	return *this;
 }
 LvStyle& LvStyle::setTextOpa(lv_opa_t value){
@@ -314,10 +294,6 @@ LvStyle& LvStyle::setImgRecolor(lv_color_t value){
 	lv_style_set_img_recolor(cObj.get(),value);
 	return *this;
 }
-LvStyle& LvStyle::setImgRecolorFiltered(lv_color_t value){
-	lv_style_set_img_recolor_filtered(cObj.get(),value);
-	return *this;
-}
 LvStyle& LvStyle::setImgRecolorOpa(lv_opa_t value){
 	lv_style_set_img_recolor_opa(cObj.get(),value);
 	return *this;
@@ -328,10 +304,6 @@ LvStyle& LvStyle::setOutlineWidth(lv_coord_t value){
 }
 LvStyle& LvStyle::setOutlineColor(lv_color_t value){
 	lv_style_set_outline_color(cObj.get(),value);
-	return *this;
-}
-LvStyle& LvStyle::setOutlineColorFiltered(lv_color_t value){
-	lv_style_set_outline_color_filtered(cObj.get(),value);
 	return *this;
 }
 LvStyle& LvStyle::setOutlineOpa(lv_opa_t value){
@@ -362,10 +334,6 @@ LvStyle& LvStyle::setShadowColor(lv_color_t value){
 	lv_style_set_shadow_color(cObj.get(),value);
 	return *this;
 }
-LvStyle& LvStyle::setShadowColorFiltered(lv_color_t value){
-	lv_style_set_shadow_color_filtered(cObj.get(),value);
-	return *this;
-}
 LvStyle& LvStyle::setShadowOpa(lv_opa_t value){
 	lv_style_set_shadow_opa(cObj.get(),value);
 	return *this;
@@ -390,10 +358,6 @@ LvStyle& LvStyle::setLineColor(lv_color_t value){
 	lv_style_set_line_color(cObj.get(),value);
 	return *this;
 }
-LvStyle& LvStyle::setLineColorFiltered(lv_color_t value){
-	lv_style_set_line_color_filtered(cObj.get(),value);
-	return *this;
-}
 LvStyle& LvStyle::setLineOpa(lv_opa_t value){
 	lv_style_set_line_opa(cObj.get(),value);
 	return *this;
@@ -408,10 +372,6 @@ LvStyle& LvStyle::setArcRounded(bool value){
 }
 LvStyle& LvStyle::setArcColor(lv_color_t value){
 	lv_style_set_arc_color(cObj.get(),value);
-	return *this;
-}
-LvStyle& LvStyle::setArcColorFiltered(lv_color_t value){
-	lv_style_set_arc_color_filtered(cObj.get(),value);
 	return *this;
 }
 LvStyle& LvStyle::setArcOpa(lv_opa_t value){

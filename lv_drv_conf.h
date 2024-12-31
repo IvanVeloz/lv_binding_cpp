@@ -82,26 +82,26 @@
 /*-------------------
  *  Monitor of PC
  *-------------------*/
-#ifndef USE_MONITOR
-#  define USE_MONITOR         1
+#ifndef USE_SDL
+#  define USE_SDL         1
 #endif
 
-#if USE_MONITOR
-#  define MONITOR_HOR_RES     480
-#  define MONITOR_VER_RES     320
+#if USE_SDL
+#  define SDL_HOR_RES     480
+#  define SDL_VER_RES     320
 
 /* Scale window by this factor (useful when simulating small screens) */
-#  define MONITOR_ZOOM        1
+#  define SDL_ZOOM        1
 
 /* Used to test true double buffering with only address changing.
  * Use 2 draw buffers, bith with MONITOR_HOR_RES x MONITOR_VER_RES size*/
-#  define MONITOR_DOUBLE_BUFFERED 0
+#  define SDL_DOUBLE_BUFFERED 0
 
 /*Eclipse: <SDL2/SDL.h>    Visual Studio: <SDL.h>*/
-#  define MONITOR_SDL_INCLUDE_PATH    <SDL2/SDL.h>
+#  define SDL_INCLUDE_PATH    <SDL2/SDL.h>
 
 /*Open two windows to test multi display support*/
-#  define MONITOR_DUAL            0
+#  define SDL_DUAL_DISPLAY    0
 #endif
 
 /*-----------------------------------

@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.arm7": "makefile",
+        "*.arm9": "makefile",
+        "sdl.h": "c"
+    }
+}

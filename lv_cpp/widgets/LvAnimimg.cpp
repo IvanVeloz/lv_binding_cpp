@@ -22,7 +22,7 @@ LvAnimimg::LvAnimimg(LvObj* Parent) : LvObj(Parent) {
 LvAnimimg::~LvAnimimg() {
 }
 LvAnimimg& LvAnimimg::setSrc(lv_img_dsc_t *dsc[], uint8_t num){
-	lv_animimg_set_src(cObj.get(),dsc,num);
+	lv_animimg_set_src(cObj.get(),(const void **)dsc,num);
 	return *this;
 }
 LvAnimimg& LvAnimimg::start(){

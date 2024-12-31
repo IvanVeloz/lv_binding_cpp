@@ -12,9 +12,11 @@ add_library(lv_binding_cpp STATIC ${SOURCES})
 
 add_subdirectory(lvgl)
 add_subdirectory(lv_drivers)
+add_subdirectory(lv_cpp_examples)
 
 target_include_directories (lvgl PUBLIC ${CMAKE_SOURCE_DIR})
 target_include_directories (lv_drivers PUBLIC ${CMAKE_SOURCE_DIR})
+target_include_directories (lv_cpp_examples PUBLIC ${CMAKE_SOURCE_DIR})
 target_include_directories (lv_binding_cpp PUBLIC ${CMAKE_SOURCE_DIR})
 
 target_link_libraries(lv_binding_cpp lvgl lv_drivers)

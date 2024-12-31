@@ -8,6 +8,7 @@
 #ifndef EXAMPLE_HPP_
 #define EXAMPLE_HPP_
 
+#include "../lv_cpp/core/lvglpp.h"
 
 #if defined(CONFIG_EXAMPLE_HELLO)
 #include "HelloEx.h"

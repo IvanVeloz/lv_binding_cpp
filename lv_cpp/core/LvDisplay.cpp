@@ -7,14 +7,14 @@
 
 #include "LvDisplay.h"
 
-#if (USE_MONITOR + USE_FBDEV ) > 1
+#if (USE_SDL + USE_FBDEV ) > 1
 #error "You cannot specify more than one display driver"
 #endif
 
 /* Input */
-#if USE_MONITOR
-#include <lv_drivers/display/monitor.h>
-#include <SDL2/SDL.h>
+#if USE_SDL
+#include <lv_drivers/sdl/sdl.h>
+#include SDL_INCLUDE_PATH
 #endif
 
 #if USE_FBDEV
@@ -28,8 +28,8 @@ LvDisplay::LvDisplay() :
 }
 
 LvDisplay::LvDisplay(lv_disp_drv_t *drv) :
-#if USE_MONITOR
-				LvDisplay(drv, MONITOR_HOR_RES, MONITOR_VER_RES)
+#if USE_SDL
+				LvDisplay(drv, SDL_HOR_RES, SDL_VER_RES)
 #endif
 
 #if USE_FBDEV
@@ -48,11 +48,11 @@ LvDisplay::LvDisplay(lv_disp_drv_t *drv, unsigned int hres, unsigned int vres) {
 	uint32_t w = 0;
 	uint32_t h = 0;
 
-#if USE_MONITOR
-	monitor_init();
-	disp_drv->flush_cb = monitor_flush;
-	w = MONITOR_HOR_RES;
-	h = MONITOR_VER_RES;
+#if USE_SDL
+	sdl_init();
+	disp_drv->flush_cb = sdl_display_flush;
+	w = SDL_HOR_RES;
+	h = SDL_VER_RES;
 
 #if LV_DISP_BUFFER_STATIC
 #endif
@@ -67,7 +67,7 @@ LvDisplay::LvDisplay(lv_disp_drv_t *drv, unsigned int hres, unsigned int vres) {
 	disp_drv->flush_cb = fbdev_flush;
 
 #if LV_DISP_BUFFER_STATIC
-#define MONITOR_HOR_RES 640
+#define SDL_HOR_RES 640
 #endif
 
 #endif
@@ -77,9 +77,9 @@ LvDisplay::LvDisplay(lv_disp_drv_t *drv, unsigned int hres, unsigned int vres) {
 	buf1_2.reset((lv_color_t*)lv_mem_alloc(h * 100));
 	lv_disp_draw_buf_init(disp_buf1.get(), buf1_1.get(), buf1_2.get(), w * 100);
 #else
-	static lv_color_t buf1_1[MONITOR_HOR_RES * 100];
-	static lv_color_t buf1_2[MONITOR_HOR_RES * 100];
-	lv_disp_draw_buf_init(disp_buf1.get(), buf1_1, buf1_2, MONITOR_HOR_RES * 100);
+	static lv_color_t buf1_1[SDL_HOR_RES * 100];
+	static lv_color_t buf1_2[SDL_HOR_RES * 100];
+	lv_disp_draw_buf_init(disp_buf1.get(), buf1_1, buf1_2, SDL_HOR_RES * 100);
 #endif
 
 	/* Initialize with basic configuration*/

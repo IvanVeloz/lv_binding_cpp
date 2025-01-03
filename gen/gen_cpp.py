@@ -35,6 +35,8 @@ def main():
     if not args.input:
         print("No input files provided.")
         sys.exit(1)
+    else:
+        print("Input files: %s" % args.input)
 
 
 if __name__ == "__main__":

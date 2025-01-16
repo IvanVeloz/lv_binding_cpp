@@ -762,6 +762,9 @@ print ("""
  * Generating Objects: {objs}
  */
 
+#ifndef OLDMPY_H_
+#define OLDMPY_H_
+
 /*
  * Mpy includes
  */
@@ -3067,4 +3070,92 @@ if args.metadata:
     with open(args.metadata, 'w') as metadata_file:
         json.dump(metadata, metadata_file, indent=4)
 
+print('#endif /* OLDMPY_H_ */')
+print('/* ACTUAL CPP BELOW */')
 
+cxxheader = '''
+/*
+ * lvglpp.h
+ *
+ *  Created on: Jun 24, 2021
+ *      Author: fstuffdev
+ */
+
+#ifndef LVGLPP_H_
+#define LVGLPP_H_
+
+#include "../../lvgl/lvgl.h"
+
+#include <memory>
+#include <functional>
+#include <vector>
+
+namespace lvglpp {
+
+/* Template for custom deleter function */
+template <auto DeleterFunction>
+using CustomDeleter = std::integral_constant<decltype(DeleterFunction), DeleterFunction>;
+
+/* Used for create a smart_pointer with custom deleter */
+template <typename ManagedType, auto Functor>
+using LvPointer = std::unique_ptr<ManagedType, CustomDeleter<Functor>>;
+
+/* Used for create a smart_pointer with default deleter for cpp object */
+template <typename ManagedType>
+using LvPointerUnique = std::unique_ptr<ManagedType>;
+
+/* Declaring Events using smart pointers */
+template <typename Class>
+using LvEventPointer = LvPointerUnique<LvEventCb<Class>>;
+
+/* Variadic class contructor */
+template <typename Class,typename... ArgsT>
+std::unique_ptr<Class> Make(ArgsT... args){
+	return std::make_unique<Class>(args...);
+};
+
+/* lvgl iterface functions */
+/* Initilize the lvglpp library */
+void Init();
+void Handler(unsigned int ms);
+void DefaultPeripheral();
+
+} /* namespace lvglpp */
+
+namespace lvglpp {
+
+LvPointerUnique<LvDisplay> Display;
+LvPointerUnique<LvInput> Input;
+
+/* Init lvgl */
+void Init() {
+	lv_init();
+}
+
+void DefaultPeripheral() {
+
+	/* Create Default Display */
+	if (Display.get() == nullptr)
+		Display = Make<LvDisplay>();
+
+	/* Create Default Input */
+	if (Input.get() == nullptr)
+		Input = Make<LvInput>();
+}
+
+void Handler(unsigned int ms) {
+	lv_tick_inc(ms);
+	lv_timer_handler();
+
+}
+
+}
+
+
+'''
+print(cxxheader)
+
+cxxtrailer = '''
+#endif /* LVGLPP_H_ */
+'''
+print(cxxtrailer)
